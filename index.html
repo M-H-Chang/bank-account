@@ -5,11 +5,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/scripts.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
   <title>Bank Account</title>
 </head>
 
 <body>
+  <div class="container">
 
+    <h1>I & M Bank</h1>
+
+    <h2>Register New Account</h2>
+
+    <form id="registerForm">
+      <label for="name">Name:</label>
+      <input id="name" type="text">
+      <label for="initialDeposit">Initial Deposit:</label>
+      <input type="text" id="initialDeposit">
+      <button type="submit" class="btn btn-success">Create!</button>
+    </form>
+
+    <h2>Deposit or Withdraw Funds</h2>
+
+    <form id="depositWithdrawForm">
+      <label for="deposit">Deposit:</label>
+      <input type="text">
+      <label for="withdraw">Withdraw:</label>
+      <input type="text">
+    </form>
+
+    <h2>Current Balance:</h2>
+    <p><span id="currentBalance"></span></p>
+    <div>
+
+    </div>
+
+
+
+
+  </div>
 </body>
 
 </html>
