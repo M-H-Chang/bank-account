@@ -1,25 +1,16 @@
 // -----Utility Logic------
 
-// function States(city, landmarks, timeOfYear) {
-//   this.city = city;
-//   this.landmarks = landmarks;
-//   this.timeOfYear = timeOfYear;
-// }
-
-
-// let Washington = new States("Seattle", ["The Needle" + ', ' + "Queen Anne"], "1995")
-// let Oregon = new States("Portland", ["Voodoo Donuts" + ', ' + "Pittock Mansion"], "2000")
-// let Hawaii = new States("Oahu", ["Waikiki" + ', ' + "Waimanalo Beach"], "2019")
-// let California = new States("San Diego", ["Balboa Park" + ', ' + "Seaworld"], "2017")
-// let Illinois = new States("Chicago", ["The Bean" + ', ' + "Museum of Art"], "2015");
-// let Colorado = new States("Boulder", ["Mesa Verde National Park" + ', ' + "Ute Tribe Park"], "2022");
-
 
 // -----Business Logic-----
 function BankAccount() {
   this.accounts = {};
   this.currentId = 0;
   this.currentBalance = 0;
+}
+
+BankAccount.prototype.depositAmount = function (deposit) {
+  this.initialDeposit + deposit
+  return this.currentBalance;
 }
 
 BankAccount.prototype.assignId = function () {
@@ -32,6 +23,13 @@ BankAccount.prototype.addAccount = function (account) {
   this.accounts[account.id] = account
 }
 
+BankAccount.prototype.findAccount = function (id) {
+  if (this.accounts[id] != undefined) {
+    return this.accounts[id];
+  }
+  return false;
+}
+
 // BankAccount.prototype.currentBalance = function () {
 //   return this.currentBalance + openingDeposit;
 // }
@@ -39,20 +37,80 @@ BankAccount.prototype.addAccount = function (account) {
 function Account(fullName, initialDeposit) {
   this.fullName = fullName;
   this.initialDeposit = initialDeposit;
+  // this.id;
 }
 
 Account.prototype.fullName = function () {
   return `${this.fullName}`;
 }
+
 // -----User Interface Logic-----
-// let accountLedger = new BankAccount();
+let accountLedger = new BankAccount();
 $(document).ready(function () {
   $("#registerForm").submit(function (event) {
     event.preventDefault();
-    // const inputtedFullName = $("#name").val();
-    // let newAccount = new Account(openingDeposit);
-    // accountLedger.addAccount(newAccount);
-    const openingDeposit = parseInt($("#initialDeposit").val())
+    const inputtedFullName = $("#name").val();
+    const openingDeposit = parseInt($("#initialDeposit").val());
+    let newAccount = new Account(inputtedFullName, openingDeposit);
+    console.log(newAccount.fullName)
+    // returns the value of the fullName property of that specific account object
+    console.log(newAccount.ssn)
+    // undefined
+    newAccount.ssn = 3
+    console.log(newAccount.ssn)
+    // 3
+    accountLedger.addAccount(newAccount);
+
+    // // we have the new deposit amount
+    // const newDepositAmount = 10;
+    // newAccount.initialDeposit += newDepositAmount;
+
+    const additionalDeposit = parseInt($("#deposit").val());
+
+
     $("#currentBalance").text(openingDeposit);
+    // $("#currentBalance").text(additionalDeposit + 50);
   })
 })
+
+
+// const brooke = {
+//   favColor: "blue",
+//   favFood: "beans"
+// }
+
+// console.log(brooke)
+// //
+// // {
+// //   favColor: "blue",
+// //     favFood: "beans"
+// // }
+
+// brooke.pets = {
+//   firstPet: {
+//     animal: "cat",
+//     colors: ["orange", "white"],
+//     temperament: "sweetie pie"
+//   }
+// }
+// console.log(brooke)
+// {
+//   favColor: "blue",
+//     favFood: "beans",
+//       pets: {
+//     firstPet: {
+//       animal: "cat",
+//         colors: ["orange", "white"],
+//           temperament: "sweetie pie"
+//     }
+//   }
+// }
+// brooke.pets = ["cat", "bird"];
+
+// console.log(brooke)
+// {
+//   favColor: "blue",
+//     favFood: "beans",
+//       pets: ["cat", "bird"]
+// }
+
