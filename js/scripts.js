@@ -45,17 +45,14 @@ Account.prototype.fullName = function () {
   return `${this.fullName}`;
 }
 // -----User Interface Logic-----
-let accountLedger = new BankAccount();
-
+// let accountLedger = new BankAccount();
 $(document).ready(function () {
-
   $("#registerForm").submit(function (event) {
     event.preventDefault();
-    $("#currentBalance").html(currentBalance)
-    const inputtedFullName = $("#name").val();
+    // const inputtedFullName = $("#name").val();
+    // let newAccount = new Account(openingDeposit);
+    // accountLedger.addAccount(newAccount);
     const openingDeposit = parseInt($("#initialDeposit").val())
-    let newAccount = new Account(inputtedFullName, openingDeposit);
-    accountLedger.addAccount(newAccount);
-
+    $("#currentBalance").text(openingDeposit);
   })
 })
